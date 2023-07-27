@@ -1,0 +1,48 @@
+# Initialize empty dictionaries for expenses and income
+expenses = {}
+income = {}
+
+# Function to add an expense to the budget
+def add_expense(category, amount):
+    if category in expenses:
+        expenses[category] += amount
+    else:
+        expenses[category] = amount
+
+# Function to add income to the budget
+def add_income(source, amount):
+    if source in income:
+        income[source] += amount
+    else:
+        income[source] = amount
+
+# Function to calculate and display the total expenses and income
+def calculate_budget():
+    total_expenses = sum(expenses.values())
+    total_income = sum(income.values())
+
+    print("------- Family Budget -------")
+    print("Expenses:")
+    for category, amount in expenses.items():
+        print(f"{category}: ${amount}")
+    print("-----------------------------")
+    print(f"Total Expenses: ${total_expenses}")
+
+    print("\nIncome:")
+    for source, amount in income.items():
+        print(f"{source}: ${amount}")
+    print("-----------------------------")
+    print(f"Total Income: ${total_income}")
+
+    balance = total_income - total_expenses
+    print("-----------------------------")
+    print(f"Balance: ${balance}")
+
+# Sample usage of the functions
+add_expense("Groceries", 200)
+add_expense("Rent", 1000)
+add_expense("Utilities", 150)
+add_income("Salary", 3000)
+add_income("Freelance Work", 500)
+
+calculate_budget()
